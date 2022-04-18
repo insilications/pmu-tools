@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : pmu-tools
 Version  : 1.0.0
-Release  : 4
+Release  : 5
 URL      : file:///aot/build/clearlinux/packages/pmu-tools/pmu-tools-v1.0.0.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/pmu-tools/pmu-tools-v1.0.0.tar.gz
 Summary  : No detailed summary available
@@ -13,6 +13,8 @@ Group    : Development/Tools
 License  : GPL-2.0
 Requires: pmu-tools-bin = %{version}-%{release}
 Requires: pmu-tools-data = %{version}-%{release}
+Requires: linux-tools
+Requires: parallel
 BuildRequires : bash
 BuildRequires : buildreq-cmake
 BuildRequires : ca-certs
@@ -64,7 +66,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1650289543
+export SOURCE_DATE_EPOCH=1650289827
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -80,7 +82,7 @@ make  %{?_smp_mflags}    V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1650289543
+export SOURCE_DATE_EPOCH=1650289827
 rm -rf %{buildroot}
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
