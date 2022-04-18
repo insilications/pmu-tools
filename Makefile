@@ -1,5 +1,5 @@
 PKG_NAME := pmu-tools
-URL = /insilications/build/custom-apps/ocperftools-clr/
+URL = /insilications/build/custom-apps/pmu-tools-clr/
 ARCHIVES = 
 ARCHIVES_GIT = 
 

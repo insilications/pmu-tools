@@ -1,0 +1,10 @@
+pushd %{buildroot}/usr/share/pmu-tools
+rm -rf .gitignore || :
+rm -rf .git/ || :
+rm -rf .github/ || :
+popd
+mkdir -p %{buildroot}/usr/bin || :
+pushd %{buildroot}/usr/bin
+ln -sf ../share/pmu-tools/ocperf.py %{buildroot}/usr/bin/ocperf
+chmod +x ./ocperf
+popd
