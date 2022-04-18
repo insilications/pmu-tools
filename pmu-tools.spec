@@ -11,6 +11,8 @@ Source0  : file:///aot/build/clearlinux/packages/pmu-tools/pmu-tools-v1.0.0.tar.
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
+Requires: pmu-tools-bin = %{version}-%{release}
+Requires: pmu-tools-data = %{version}-%{release}
 BuildRequires : bash
 BuildRequires : buildreq-cmake
 BuildRequires : ca-certs
@@ -35,6 +37,23 @@ BuildRequires : zlib-dev
 %description
 No detailed description available
 
+%package bin
+Summary: bin components for the pmu-tools package.
+Group: Binaries
+Requires: pmu-tools-data = %{version}-%{release}
+
+%description bin
+bin components for the pmu-tools package.
+
+
+%package data
+Summary: data components for the pmu-tools package.
+Group: Data
+
+%description data
+data components for the pmu-tools package.
+
+
 %prep
 %setup -q -n pmu-tools-clr
 cd %{_builddir}/pmu-tools-clr
@@ -45,7 +64,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1650289510
+export SOURCE_DATE_EPOCH=1650289543
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -61,7 +80,7 @@ make  %{?_smp_mflags}    V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1650289510
+export SOURCE_DATE_EPOCH=1650289543
 rm -rf %{buildroot}
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -89,3 +108,229 @@ popd
 
 %files
 %defattr(-,root,root,-)
+
+%files bin
+%defattr(-,root,root,-)
+/usr/bin/ocperf
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/pmu-tools/CHANGES.md
+/usr/share/pmu-tools/COPYING
+/usr/share/pmu-tools/Makefile
+/usr/share/pmu-tools/PYLINT
+/usr/share/pmu-tools/README.md
+/usr/share/pmu-tools/RERUN
+/usr/share/pmu-tools/TOOLS.md
+/usr/share/pmu-tools/adl_glc_ratios.py
+/usr/share/pmu-tools/adl_grt_ratios.py
+/usr/share/pmu-tools/all-tester
+/usr/share/pmu-tools/bdw-cpuinfo
+/usr/share/pmu-tools/bdw_client_ratios.py
+/usr/share/pmu-tools/bdx_server_ratios.py
+/usr/share/pmu-tools/cleanlogs
+/usr/share/pmu-tools/clx_server_ratios.py
+/usr/share/pmu-tools/counterdiff.py
+/usr/share/pmu-tools/cpumap.sh
+/usr/share/pmu-tools/cputop
+/usr/share/pmu-tools/cputop.py
+/usr/share/pmu-tools/csv_formats.py
+/usr/share/pmu-tools/event-rmap.py
+/usr/share/pmu-tools/event-translate.py
+/usr/share/pmu-tools/event_download
+/usr/share/pmu-tools/event_download.py
+/usr/share/pmu-tools/fake-perf.py
+/usr/share/pmu-tools/frequency.py
+/usr/share/pmu-tools/gen-dot.py
+/usr/share/pmu-tools/gen_level.py
+/usr/share/pmu-tools/hsw_client_ratios.py
+/usr/share/pmu-tools/hsx_server_ratios.py
+/usr/share/pmu-tools/icl_client_ratios.py
+/usr/share/pmu-tools/icx_server_ratios.py
+/usr/share/pmu-tools/interval-merge
+/usr/share/pmu-tools/interval-merge.py
+/usr/share/pmu-tools/interval-normalize
+/usr/share/pmu-tools/interval-normalize.py
+/usr/share/pmu-tools/interval-plot
+/usr/share/pmu-tools/interval-plot.py
+/usr/share/pmu-tools/ivb_client_ratios.py
+/usr/share/pmu-tools/ivb_server_ratios.py
+/usr/share/pmu-tools/jevents/Makefile
+/usr/share/pmu-tools/jevents/README.md
+/usr/share/pmu-tools/jevents/cache.c
+/usr/share/pmu-tools/jevents/cpustr.c
+/usr/share/pmu-tools/jevents/csv.c
+/usr/share/pmu-tools/jevents/event-rmap.c
+/usr/share/pmu-tools/jevents/examples/Makefile
+/usr/share/pmu-tools/jevents/examples/addr.c
+/usr/share/pmu-tools/jevents/examples/cpu.c
+/usr/share/pmu-tools/jevents/examples/cpu.h
+/usr/share/pmu-tools/jevents/examples/hist.cc
+/usr/share/pmu-tools/jevents/examples/hist.h
+/usr/share/pmu-tools/jevents/examples/jestat.c
+/usr/share/pmu-tools/jevents/examples/ptself.c
+/usr/share/pmu-tools/jevents/examples/rtest.c
+/usr/share/pmu-tools/jevents/examples/rtest2.c
+/usr/share/pmu-tools/jevents/examples/rtest3.c
+/usr/share/pmu-tools/jevents/interrupts.c
+/usr/share/pmu-tools/jevents/interrupts.h
+/usr/share/pmu-tools/jevents/jevents.c
+/usr/share/pmu-tools/jevents/jevents.h
+/usr/share/pmu-tools/jevents/jsession.h
+/usr/share/pmu-tools/jevents/jsmn.c
+/usr/share/pmu-tools/jevents/jsmn.h
+/usr/share/pmu-tools/jevents/json.c
+/usr/share/pmu-tools/jevents/json.h
+/usr/share/pmu-tools/jevents/libjevents.spec
+/usr/share/pmu-tools/jevents/listevents.c
+/usr/share/pmu-tools/jevents/measure.c
+/usr/share/pmu-tools/jevents/measure.h
+/usr/share/pmu-tools/jevents/perf-aux.c
+/usr/share/pmu-tools/jevents/perf-iter.c
+/usr/share/pmu-tools/jevents/perf-iter.h
+/usr/share/pmu-tools/jevents/perf-record.h
+/usr/share/pmu-tools/jevents/perf_event_open.c
+/usr/share/pmu-tools/jevents/print.c
+/usr/share/pmu-tools/jevents/rawevent.c
+/usr/share/pmu-tools/jevents/rdpmc.c
+/usr/share/pmu-tools/jevents/rdpmc.h
+/usr/share/pmu-tools/jevents/resolve.c
+/usr/share/pmu-tools/jevents/session.c
+/usr/share/pmu-tools/jevents/showevent.c
+/usr/share/pmu-tools/jevents/tester
+/usr/share/pmu-tools/jevents/util.h
+/usr/share/pmu-tools/jkt_server_ratios.py
+/usr/share/pmu-tools/knl_ratios.py
+/usr/share/pmu-tools/latego.py
+/usr/share/pmu-tools/linux_metrics.py
+/usr/share/pmu-tools/list-events.py
+/usr/share/pmu-tools/listutils.py
+/usr/share/pmu-tools/metrics.py
+/usr/share/pmu-tools/msr
+/usr/share/pmu-tools/msr.py
+/usr/share/pmu-tools/node.py
+/usr/share/pmu-tools/objutils.py
+/usr/share/pmu-tools/oc-all-events
+/usr/share/pmu-tools/ocperf
+/usr/share/pmu-tools/ocperf.py
+/usr/share/pmu-tools/other-tester
+/usr/share/pmu-tools/parallel-tester
+/usr/share/pmu-tools/parser/elf.py
+/usr/share/pmu-tools/parser/hist.py
+/usr/share/pmu-tools/parser/kernel.py
+/usr/share/pmu-tools/parser/mmap.py
+/usr/share/pmu-tools/parser/perfdata.py
+/usr/share/pmu-tools/parser/perfpd.py
+/usr/share/pmu-tools/parser/pfeat.py
+/usr/share/pmu-tools/parser/tester
+/usr/share/pmu-tools/parser/util.py
+/usr/share/pmu-tools/pci.py
+/usr/share/pmu-tools/pebs-grabber/Makefile
+/usr/share/pmu-tools/pebs-grabber/pebs-grabber.c
+/usr/share/pmu-tools/pebs-grabber/pebs.h
+/usr/share/pmu-tools/perf_metrics.py
+/usr/share/pmu-tools/plot-normalized.py
+/usr/share/pmu-tools/pmudef.py
+/usr/share/pmu-tools/pmumon.py
+/usr/share/pmu-tools/power_metrics.py
+/usr/share/pmu-tools/requirements.txt
+/usr/share/pmu-tools/simple-pebs/Makefile
+/usr/share/pmu-tools/simple-pebs/README
+/usr/share/pmu-tools/simple-pebs/compat.h
+/usr/share/pmu-tools/simple-pebs/dump-util.c
+/usr/share/pmu-tools/simple-pebs/dump-util.h
+/usr/share/pmu-tools/simple-pebs/dumper.c
+/usr/share/pmu-tools/simple-pebs/elf.c
+/usr/share/pmu-tools/simple-pebs/elf.h
+/usr/share/pmu-tools/simple-pebs/histogram.c
+/usr/share/pmu-tools/simple-pebs/map.c
+/usr/share/pmu-tools/simple-pebs/map.h
+/usr/share/pmu-tools/simple-pebs/samples.c
+/usr/share/pmu-tools/simple-pebs/simple-pebs.c
+/usr/share/pmu-tools/simple-pebs/simple-pebs.h
+/usr/share/pmu-tools/simple-pebs/symtab.c
+/usr/share/pmu-tools/simple-pebs/symtab.h
+/usr/share/pmu-tools/simple-pebs/toperf.c
+/usr/share/pmu-tools/simple_ratios.py
+/usr/share/pmu-tools/skl_client_ratios.py
+/usr/share/pmu-tools/skx_server_ratios.py
+/usr/share/pmu-tools/slm_ratios.py
+/usr/share/pmu-tools/snb_client_ratios.py
+/usr/share/pmu-tools/test-uncore.json
+/usr/share/pmu-tools/tester
+/usr/share/pmu-tools/tl-barplot.py
+/usr/share/pmu-tools/tl-serve
+/usr/share/pmu-tools/tl-serve.py
+/usr/share/pmu-tools/tl-tester
+/usr/share/pmu-tools/tl-xlsx.py
+/usr/share/pmu-tools/tl_cpu.py
+/usr/share/pmu-tools/tl_io.py
+/usr/share/pmu-tools/tl_output.py
+/usr/share/pmu-tools/tl_stat.py
+/usr/share/pmu-tools/tl_uval.py
+/usr/share/pmu-tools/tldata.py
+/usr/share/pmu-tools/toplev
+/usr/share/pmu-tools/toplev.ico
+/usr/share/pmu-tools/toplev.man
+/usr/share/pmu-tools/toplev.py
+/usr/share/pmu-tools/topology
+/usr/share/pmu-tools/tsx_metrics.py
+/usr/share/pmu-tools/ucevent/CHECK-ALL
+/usr/share/pmu-tools/ucevent/CHECK-DERIVED
+/usr/share/pmu-tools/ucevent/JKT
+/usr/share/pmu-tools/ucevent/MOCK-ALL
+/usr/share/pmu-tools/ucevent/Makefile
+/usr/share/pmu-tools/ucevent/README.md
+/usr/share/pmu-tools/ucevent/RUN-ALL
+/usr/share/pmu-tools/ucevent/SANITY-ALL
+/usr/share/pmu-tools/ucevent/aux.py
+/usr/share/pmu-tools/ucevent/bdx_extra.py
+/usr/share/pmu-tools/ucevent/bdx_uc.py
+/usr/share/pmu-tools/ucevent/bdxde_extra.py
+/usr/share/pmu-tools/ucevent/bdxde_uc.py
+/usr/share/pmu-tools/ucevent/dygraph-out.html
+/usr/share/pmu-tools/ucevent/hsx_extra.py
+/usr/share/pmu-tools/ucevent/hsx_uc.py
+/usr/share/pmu-tools/ucevent/icx_extra.py
+/usr/share/pmu-tools/ucevent/icx_uc.py
+/usr/share/pmu-tools/ucevent/ivt_extra.py
+/usr/share/pmu-tools/ucevent/ivt_uc.py
+/usr/share/pmu-tools/ucevent/jkt_extra.py
+/usr/share/pmu-tools/ucevent/jkt_uc.py
+/usr/share/pmu-tools/ucevent/md2hman.py
+/usr/share/pmu-tools/ucevent/patches-3.10/0001-perf-Use-hrtimers-for-event-multiplexing.patch
+/usr/share/pmu-tools/ucevent/patches-3.10/0002-perf-Add-sysfs-entry-to-adjust-multiplexing-interval.patch
+/usr/share/pmu-tools/ucevent/patches-3.10/0003-perf-uncore-qpi-filter.patch
+/usr/share/pmu-tools/ucevent/patches-3.10/0004-per-socket-fix.patch
+/usr/share/pmu-tools/ucevent/patches-3.10/0005-support-pcu-extsel.patch
+/usr/share/pmu-tools/ucevent/patches-3.10/0006-add-masks.patch
+/usr/share/pmu-tools/ucevent/patches-3.10/README
+/usr/share/pmu-tools/ucevent/patches-3.16/0001-perf-x86-intel-Add-Haswell-EP-uncore-support.patch
+/usr/share/pmu-tools/ucevent/patches-3.16/0002-perf-x86-uncore-register-the-PMU-only-if-the-uncore-.patch
+/usr/share/pmu-tools/ucevent/patches-3.16/0004-perf-x86-uncore-Add-missing-cbox-filter-flags-on-Ivy.patch
+/usr/share/pmu-tools/ucevent/patches-3.16/0005-perf-x86-uncore-Fix-PCU-filter-setup-for-Sandy-Ivy-H.patch
+/usr/share/pmu-tools/ucevent/patches-3.16/0006-fixup-perf-x86-uncore-Fix-PCU-filter-setup-for-Sandy.patch
+/usr/share/pmu-tools/ucevent/sanity-run.py
+/usr/share/pmu-tools/ucevent/skx_extra.py
+/usr/share/pmu-tools/ucevent/skx_uc.py
+/usr/share/pmu-tools/ucevent/ucevent.man
+/usr/share/pmu-tools/ucevent/ucevent.py
+/usr/share/pmu-tools/ucevent/ucexpr.py
+/usr/share/pmu-tools/ucevent/ucmsg.py
+/usr/share/pmu-tools/ucevent/uctester
+/usr/share/pmu-tools/ucevent/uctopy.pl
+/usr/share/pmu-tools/utilized.py
+/usr/share/pmu-tools/workloads/BC1s
+/usr/share/pmu-tools/workloads/BC2s
+/usr/share/pmu-tools/workloads/CALC10s
+/usr/share/pmu-tools/workloads/CALC1s
+/usr/share/pmu-tools/workloads/CLANG10s
+/usr/share/pmu-tools/workloads/CLTRAMP3D
+/usr/share/pmu-tools/workloads/COMPILE10s
+/usr/share/pmu-tools/workloads/EMACS1s
+/usr/share/pmu-tools/workloads/GCCTRAMP3D
+/usr/share/pmu-tools/workloads/GUILE1s
+/usr/share/pmu-tools/workloads/MEMHOG
+/usr/share/pmu-tools/workloads/PERL1s
+/usr/share/pmu-tools/workloads/PHP1s
+/usr/share/pmu-tools/workloads/PYTHON1s
