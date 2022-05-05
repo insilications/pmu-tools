@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : pmu-tools
 Version  : 1.0.0
-Release  : 5
+Release  : 6
 URL      : file:///aot/build/clearlinux/packages/pmu-tools/pmu-tools-v1.0.0.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/pmu-tools/pmu-tools-v1.0.0.tar.gz
 Summary  : No detailed summary available
@@ -66,7 +66,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1650289827
+export SOURCE_DATE_EPOCH=1651739989
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -82,7 +82,7 @@ make  %{?_smp_mflags}    V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1650289827
+export SOURCE_DATE_EPOCH=1651739989
 rm -rf %{buildroot}
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -258,6 +258,7 @@ popd
 /usr/share/pmu-tools/skx_server_ratios.py
 /usr/share/pmu-tools/slm_ratios.py
 /usr/share/pmu-tools/snb_client_ratios.py
+/usr/share/pmu-tools/spr_server_ratios.py
 /usr/share/pmu-tools/test-uncore.json
 /usr/share/pmu-tools/tester
 /usr/share/pmu-tools/tl-barplot.py
@@ -285,7 +286,6 @@ popd
 /usr/share/pmu-tools/ucevent/README.md
 /usr/share/pmu-tools/ucevent/RUN-ALL
 /usr/share/pmu-tools/ucevent/SANITY-ALL
-/usr/share/pmu-tools/ucevent/aux.py
 /usr/share/pmu-tools/ucevent/bdx_extra.py
 /usr/share/pmu-tools/ucevent/bdx_uc.py
 /usr/share/pmu-tools/ucevent/bdxde_extra.py
@@ -315,6 +315,7 @@ popd
 /usr/share/pmu-tools/ucevent/sanity-run.py
 /usr/share/pmu-tools/ucevent/skx_extra.py
 /usr/share/pmu-tools/ucevent/skx_uc.py
+/usr/share/pmu-tools/ucevent/ucaux.py
 /usr/share/pmu-tools/ucevent/ucevent.man
 /usr/share/pmu-tools/ucevent/ucevent.py
 /usr/share/pmu-tools/ucevent/ucexpr.py
